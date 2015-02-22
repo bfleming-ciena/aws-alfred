@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>1.0</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>C1F10F0E-F492-4A12-8538-5204C48B7A6F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EC22C559-73A6-4148-9AE4-5DDB53EC8414</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>CCAB609B-D06F-4058-962E-9AEE5B69BDC5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Brian Fleming</string>
+	<key>description</key>
+	<string>AWS Workflow</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>aws</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>EC22C559-73A6-4148-9AE4-5DDB53EC8414</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>ec2</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string>#!/usr/bin/python
+# encoding: utf-8
+
+import sys
+
+from workflow import Workflow
+import entrypoint
+
+log = None
+
+
+def main(wf):
+    # The Workflow instance will be passed to the function
+    # you call from `Workflow.run`
+
+    # Your imports here if you want to catch import errors
+
+
+    # Get args from Workflow as normalized Unicode
+    args = wf.args
+
+    # Do stuff here ...
+    from awsboto import search_instances
+    
+
+    instances = search_instances(wf.args[3])
+    
+    if len(instances) &gt; 0:
+        for i in instances:
+            # Add an item to Alfred feedback
+            wf.add_item(i, 'Item subtitle')
+    else:
+        wf.add_item('None found', 'Item subtitle')
+
+    # Send output to Alfred
+    wf.send_feedback()
+
+
+if __name__ == '__main__':
+    wf = Workflow()
+    # Assign Workflow logger to a global variable for convenience
+    log = wf.logger
+    #sys.exit(wf.run(entrypoint.main))
+    entrypoint.run("{query}")</string>
+				<key>title</key>
+				<string>ec2</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>C1F10F0E-F492-4A12-8538-5204C48B7A6F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Copied to clipboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>CCAB609B-D06F-4058-962E-9AEE5B69BDC5</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>C1F10F0E-F492-4A12-8538-5204C48B7A6F</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>CCAB609B-D06F-4058-962E-9AEE5B69BDC5</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>EC22C559-73A6-4148-9AE4-5DDB53EC8414</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
