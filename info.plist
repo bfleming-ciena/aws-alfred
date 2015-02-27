@@ -8,6 +8,17 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
+		<key>A209CD4A-5ED5-4E91-A786-85C190DC8729</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EC6CDE98-837C-47E3-96C2-DEF7DD16E3D9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>C1F10F0E-F492-4A12-8538-5204C48B7A6F</key>
 		<array>
 			<dict>
@@ -21,6 +32,17 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>CCAB609B-D06F-4058-962E-9AEE5B69BDC5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>EC6CDE98-837C-47E3-96C2-DEF7DD16E3D9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8EF214E8-D7D3-4217-9D26-7A3EB4714243</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -154,11 +176,97 @@ if __name__ == '__main__':
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>#!/usr/bin/python
+# encoding: utf-8
+
+import sys
+
+from workflow import Workflow
+import entrypoint
+
+log = None
+
+if __name__ == '__main__':
+    wf = Workflow()
+    # Assign Workflow logger to a global variable for convenience
+    log = wf.logger
+    #sys.exit(wf.run(entrypoint.main))
+    entrypoint.run_aws_save_config("{query}")</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>EC6CDE98-837C-47E3-96C2-DEF7DD16E3D9</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>aws config</string>
+				<key>text</key>
+				<string>e.g. region=us-west-2,name1=value1,name2=value2</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>A209CD4A-5ED5-4E91-A786-85C190DC8729</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>Configuration saved.</string>
+				<key>title</key>
+				<string>Saved</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>8EF214E8-D7D3-4217-9D26-7A3EB4714243</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>8EF214E8-D7D3-4217-9D26-7A3EB4714243</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>A209CD4A-5ED5-4E91-A786-85C190DC8729</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
 		<key>C1F10F0E-F492-4A12-8538-5204C48B7A6F</key>
 		<dict>
 			<key>ypos</key>
@@ -173,6 +281,11 @@ if __name__ == '__main__':
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
+		</dict>
+		<key>EC6CDE98-837C-47E3-96C2-DEF7DD16E3D9</key>
+		<dict>
+			<key>ypos</key>
+			<real>200</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

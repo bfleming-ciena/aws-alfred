@@ -1,8 +1,28 @@
 import boto.ec2
+import yaml
+
+
+def save_config(query):
+    config = dict(([x.split('=') for x in query.split(',')]))
+    stream = file('./aws.conf', 'w')
+    # config['region'] = query
+    yaml.dump(config, stream)
+
+
+def load_config():
+    stream = file('./aws.conf', 'r')
+    return yaml.load(stream)
 
 
 def get_instances():
-    boto_ec2 = boto.ec2.connect_to_region("us-west-2")
+
+    config = load_config()
+    if 'region' in config:
+        region = config['region']
+    else:
+        region = 'us-west-2'
+
+    boto_ec2 = boto.ec2.connect_to_region(region)
     rsv = boto_ec2.get_all_instances()
     idata = {}
     for r in rsv:
