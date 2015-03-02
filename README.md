@@ -20,9 +20,9 @@ However you need to have the following file.
 
 ~/.boto
 
-[Credentials]
-aws_access_key_id=[Yours]
-aws_secret_access_key=[Yours]
+    [Credentials]
+    aws_access_key_id=[Yours]
+    aws_secret_access_key=[Yours]
 
 
 ## The Workflow Itself
