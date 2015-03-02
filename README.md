@@ -16,7 +16,7 @@ Searches EC2 instances. Type anything. All instance properties will be searched.
 ## Requirements
 Uses the python boto module.  You only need python, or at least should.  All required python modules should be present in the workflow. No need to install them.
 
-However you need to have the following file.
+However you must setup the creds file:
 
 ~/.boto
 
