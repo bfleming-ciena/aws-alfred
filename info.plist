@@ -8,11 +8,49 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
+		<key>5866DFF2-B59B-4A47-B234-C1F0D2404429</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>34E292E7-B8DB-45F9-9C2D-68D92A4A583D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>5430C02C-9B2A-4EC9-A04C-BB85216CE35C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>90B7684F-5210-4420-A3A8-DD8EC398B1B2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A906A044-71D9-4038-B857-5CD2C0E07523</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DEC81702-E6C4-47FA-A94A-03E488C6B95B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>A209CD4A-5ED5-4E91-A786-85C190DC8729</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>EC6CDE98-837C-47E3-96C2-DEF7DD16E3D9</string>
+				<string>E9FBA71A-4128-46DA-BE33-FE1FA8279326</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -32,6 +70,25 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>CCAB609B-D06F-4058-962E-9AEE5B69BDC5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>E9FBA71A-4128-46DA-BE33-FE1FA8279326</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8EF214E8-D7D3-4217-9D26-7A3EB4714243</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>8409C551-227C-410C-8C70-F2D636FEDE19</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -63,21 +120,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>EC22C559-73A6-4148-9AE4-5DDB53EC8414</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -93,54 +135,11 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>script</key>
-				<string>#!/usr/bin/python
-# encoding: utf-8
-
-import sys
-
-from workflow import Workflow
-import entrypoint
-
-log = None
-
-
-def main(wf):
-    # The Workflow instance will be passed to the function
-    # you call from `Workflow.run`
-
-    # Your imports here if you want to catch import errors
-
-
-    # Get args from Workflow as normalized Unicode
-    args = wf.args
-
-    # Do stuff here ...
-    from awsboto import search_instances
-    
-
-    instances = search_instances(wf.args[3])
-    
-    if len(instances) &gt; 0:
-        for i in instances:
-            # Add an item to Alfred feedback
-            wf.add_item(i, 'Item subtitle')
-    else:
-        wf.add_item('None found', 'Item subtitle')
-
-    # Send output to Alfred
-    wf.send_feedback()
-
-
-if __name__ == '__main__':
-    wf = Workflow()
-    # Assign Workflow logger to a global variable for convenience
-    log = wf.logger
-    #sys.exit(wf.run(entrypoint.main))
-    entrypoint.run("{query}")</string>
+				<string>python entrypoint.py "{query}" "ec2_gen_search" "ip_address"</string>
 				<key>title</key>
 				<string>ec2</string>
 				<key>type</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -148,6 +147,21 @@ if __name__ == '__main__':
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>C1F10F0E-F492-4A12-8538-5204C48B7A6F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>EC22C559-73A6-4148-9AE4-5DDB53EC8414</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -252,20 +266,234 @@ if __name__ == '__main__':
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>python entrypoint.py "{query}" aws_save_config</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E9FBA71A-4128-46DA-BE33-FE1FA8279326</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>8409C551-227C-410C-8C70-F2D636FEDE19</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>ec2start</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string>python entrypoint.py "{query}" "ec2_gen_search" "id"</string>
+				<key>title</key>
+				<string>ec2start</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>90B7684F-5210-4420-A3A8-DD8EC398B1B2</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Copied to clipboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>A906A044-71D9-4038-B857-5CD2C0E07523</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>ec2stop</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string>python entrypoint.py "{query}" "ec2_gen_search" "id"</string>
+				<key>title</key>
+				<string>ec2stop</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>5866DFF2-B59B-4A47-B234-C1F0D2404429</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>python entrypoint.py {query} ec2_start_instance</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>DEC81702-E6C4-47FA-A94A-03E488C6B95B</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Copied to clipboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>34E292E7-B8DB-45F9-9C2D-68D92A4A583D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>python entrypoint.py {query} ec2_stop_instance</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>5430C02C-9B2A-4EC9-A04C-BB85216CE35C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>34E292E7-B8DB-45F9-9C2D-68D92A4A583D</key>
+		<dict>
+			<key>ypos</key>
+			<real>720</real>
+		</dict>
+		<key>5430C02C-9B2A-4EC9-A04C-BB85216CE35C</key>
+		<dict>
+			<key>ypos</key>
+			<real>830</real>
+		</dict>
+		<key>5866DFF2-B59B-4A47-B234-C1F0D2404429</key>
+		<dict>
+			<key>ypos</key>
+			<real>560</real>
+		</dict>
+		<key>8409C551-227C-410C-8C70-F2D636FEDE19</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
 		<key>8EF214E8-D7D3-4217-9D26-7A3EB4714243</key>
 		<dict>
 			<key>ypos</key>
 			<real>250</real>
 		</dict>
+		<key>90B7684F-5210-4420-A3A8-DD8EC398B1B2</key>
+		<dict>
+			<key>ypos</key>
+			<real>430</real>
+		</dict>
 		<key>A209CD4A-5ED5-4E91-A786-85C190DC8729</key>
 		<dict>
 			<key>ypos</key>
 			<real>250</real>
+		</dict>
+		<key>A906A044-71D9-4038-B857-5CD2C0E07523</key>
+		<dict>
+			<key>ypos</key>
+			<real>490</real>
 		</dict>
 		<key>C1F10F0E-F492-4A12-8538-5204C48B7A6F</key>
 		<dict>
@@ -276,6 +504,16 @@ if __name__ == '__main__':
 		<dict>
 			<key>ypos</key>
 			<real>130</real>
+		</dict>
+		<key>DEC81702-E6C4-47FA-A94A-03E488C6B95B</key>
+		<dict>
+			<key>ypos</key>
+			<real>590</real>
+		</dict>
+		<key>E9FBA71A-4128-46DA-BE33-FE1FA8279326</key>
+		<dict>
+			<key>ypos</key>
+			<real>320</real>
 		</dict>
 		<key>EC22C559-73A6-4148-9AE4-5DDB53EC8414</key>
 		<dict>

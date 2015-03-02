@@ -35,6 +35,30 @@ def get_instances():
     return idata
 
 
+def start_instance(id):
+    config = load_config()
+    if 'region' in config:
+        region = config['region']
+    else:
+        region = 'us-west-2'
+
+    boto_ec2 = boto.ec2.connect_to_region(region)
+    instance = boto_ec2.get_all_instances(instance_ids=[id])
+    return instance[0].instances[0].start()
+
+
+def stop_instance(id):
+    config = load_config()
+    if 'region' in config:
+        region = config['region']
+    else:
+        region = 'us-west-2'
+
+    boto_ec2 = boto.ec2.connect_to_region(region)
+    instance = boto_ec2.get_all_instances(instance_ids=[id])
+    return instance[0].instances[0].stop()
+
+
 def instance_to_string(i):
     if 'Name' in i.tags.keys():
         tag_value = i.tags['Name']
