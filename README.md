@@ -13,6 +13,17 @@ Example Usage:
 
 Searches EC2 instances. Type anything. All instance properties will be searched.
 
+## Requirements
+Uses the python boto module.  You only need python, or at least should.  All required python modules should be present in the workflow. No need to install them.
+
+However you need to have the following file.
+
+~/.boto
+
+[Credentials]
+aws_access_key_id=[Yours]
+aws_secret_access_key=[Yours]
+
 
 ## The Workflow Itself
 1) Create a new command by creating a new keyword with arg, and change it to bash script. Here is an example.
