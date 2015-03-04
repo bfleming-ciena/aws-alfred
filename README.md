@@ -1,5 +1,4 @@
 # aws-alfred
-#
 AWS Workflow for Alfred2
 
 Example Usage:
