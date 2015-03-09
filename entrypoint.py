@@ -124,7 +124,6 @@ def ec2_search(wf):
         # wf.logger.debug("Alfred Args Sent: " + str(wf.args) + "length=" + str(len(wf.args)))
 
     # Do stuff here ...
-
     instances = search_instances(query)
 
     if len(instances) > 0:

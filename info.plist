@@ -306,7 +306,7 @@ if __name__ == '__main__':
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
-				<integer>127</integer>
+				<integer>126</integer>
 				<key>keyword</key>
 				<string>ec2 start</string>
 				<key>queuedelaycustom</key>
@@ -364,7 +364,7 @@ if __name__ == '__main__':
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
-				<integer>127</integer>
+				<integer>126</integer>
 				<key>keyword</key>
 				<string>ec2 stop</string>
 				<key>queuedelaycustom</key>
