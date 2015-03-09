@@ -16,7 +16,7 @@ Example Usage:
 
 Set the region you want to search.
 
-    aws config region=us-west-2
+    ec2 config region=us-west-2
 
 ec2 find
 Searches EC2 instances. Type anything, and multiple keywords. All instance properties will be searched.
