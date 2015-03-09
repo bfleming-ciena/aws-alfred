@@ -18,8 +18,7 @@ Set the region you want to search.
 
     ec2 config region=us-west-2
 
-ec2 find
-Searches EC2 instances. Type anything, and multiple keywords. All instance properties will be searched.
+ec2 find -- Searches EC2 instances. Type anything, and multiple keywords. All instance properties will be searched.
 
     ec2 find {any string} {any string}  (copies the IP to the clipboard)
     example:
