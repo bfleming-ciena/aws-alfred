@@ -16,6 +16,8 @@ def ec2_gen_search(wf):
         argname = wf.args[2]
         wf.logger.debug(argname)
 
+    wf.logger.debug(query)
+
     instances = search_instances(query)
 
     if len(instances) > 0:
@@ -23,6 +25,8 @@ def ec2_gen_search(wf):
             # Add an item to Alfred feedback
 
             val = getattr(i, argname)
+            if not val:
+                val = "No public IP exists. Is the instance running?"
             wf.add_item(str(instance_to_string(i)), str(i.instance_type) + ", " + str(i.key_name),
                         arg=val,
                         valid=True,)

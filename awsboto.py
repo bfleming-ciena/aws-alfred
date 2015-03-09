@@ -68,11 +68,16 @@ def instance_to_string(i):
 def search_instances(query):
     # CACHE['expires'] = 30 # Seconds to expire cache
     idata = get_instances()
-
     search_results = []
     for k in idata.keys():
         stringify_instance = ("".join(str(idata[k].__dict__.values()))).lower()
-        if query in stringify_instance:
+        queries = query.split(" ")
+        match = 0
+        for q in queries:
+            if q in stringify_instance:
+                match = match + 1
+
+        if match == len(queries):  # all user queries matched, we got a winner.
             search_results.append(idata[k])
 
     return search_results

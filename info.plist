@@ -123,9 +123,9 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
-				<integer>127</integer>
+				<integer>126</integer>
 				<key>keyword</key>
-				<string>ec2</string>
+				<string>ec2 find</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -137,7 +137,7 @@
 				<key>script</key>
 				<string>python entrypoint.py "{query}" "ec2_gen_search" "ip_address"</string>
 				<key>title</key>
-				<string>ec2</string>
+				<string>ec2 find</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -228,7 +228,7 @@ if __name__ == '__main__':
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
-				<string>aws config</string>
+				<string>ec2 config</string>
 				<key>text</key>
 				<string>e.g. region=us-west-2,name1=value1,name2=value2</string>
 				<key>withspace</key>
@@ -308,7 +308,7 @@ if __name__ == '__main__':
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
-				<string>ec2start</string>
+				<string>ec2 start</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -320,7 +320,7 @@ if __name__ == '__main__':
 				<key>script</key>
 				<string>python entrypoint.py "{query}" "ec2_gen_search" "id"</string>
 				<key>title</key>
-				<string>ec2start</string>
+				<string>ec2 start</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -347,9 +347,9 @@ if __name__ == '__main__':
 				<key>sticky</key>
 				<false/>
 				<key>text</key>
-				<string>{query}</string>
+				<string>{query} copied to clipboard</string>
 				<key>title</key>
-				<string>Copied to clipboard</string>
+				<string>Start command sent.</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
@@ -366,7 +366,7 @@ if __name__ == '__main__':
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
-				<string>ec2stop</string>
+				<string>ec2 stop</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -378,7 +378,7 @@ if __name__ == '__main__':
 				<key>script</key>
 				<string>python entrypoint.py "{query}" "ec2_gen_search" "id"</string>
 				<key>title</key>
-				<string>ec2stop</string>
+				<string>ec2 stop</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -422,9 +422,9 @@ if __name__ == '__main__':
 				<key>sticky</key>
 				<false/>
 				<key>text</key>
-				<string>{query}</string>
+				<string>{query} copied to clipboard</string>
 				<key>title</key>
-				<string>Copied to clipboard</string>
+				<string>Stop command sent.</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
