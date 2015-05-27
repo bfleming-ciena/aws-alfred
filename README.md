@@ -18,13 +18,17 @@ Set the region you want to search.
 
     ec2 config region=us-west-2
 
+Configure which IP address gets output:
+
+    ec2 config ip_type=private
+
 ec2 find -- Searches EC2 instances. Type anything, and multiple keywords. All instance properties will be searched.
 
     ec2 find {any string} {any string}  (copies the IP to the clipboard)
     example:
     ec2 find killroy running
 
-The Public IP address will be copied to the clipboard on enter.
+The IP address will be copied to the clipboard on enter.
 
 ec2 stop and start work the same as ec2 find, but will send stop or start commands.
 

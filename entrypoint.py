@@ -1,12 +1,13 @@
 import sys
 
 from workflow import Workflow
-from awsboto import start_instance, stop_instance, search_instances, save_config, instance_to_string
+from awsboto import start_instance, stop_instance, search_instances, save_config, instance_to_string, load_config
 
 
 def ec2_gen_search(wf):
     # The Workflow instance will be passed to the function
     # you call from `Workflow.run`
+    config = load_config()
 
     # Your imports here if you want to catch import errors
 
@@ -23,8 +24,11 @@ def ec2_gen_search(wf):
     if len(instances) > 0:
         for i in instances:
             # Add an item to Alfred feedback
+            if config['ip_style']=='private' and argname=='ip_address':
+                val = getattr(i, 'private_ip_address')
+            else:
+                val = getattr(i, argname)
 
-            val = getattr(i, argname)
             if not val:
                 val = "No public IP exists. Is the instance running?"
             wf.add_item(str(instance_to_string(i)), str(i.instance_type) + ", " + str(i.key_name),

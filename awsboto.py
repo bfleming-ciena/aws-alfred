@@ -28,7 +28,7 @@ def get_instances():
     for r in rsv:
         i = r.instances[0]
         tag_value = i.tags.get('Name', '')
-        idata[i.id + ", " + tag_value + ", " + str(i.ip_address) + ", " + i.state] = i
+        idata[instance_to_string(i)] = i
     return idata
 
 
@@ -58,8 +58,10 @@ def stop_instance(id):
 
 def instance_to_string(i):
     #if 'Name' in i.tags.keys():
+    config = load_config()
     tag_value = i.tags.get('Name', '')
-    return i.id + ", " + tag_value + ", " + str(i.ip_address) + ", " + i.state
+    ip = i.private_ip_address if config.get('ip_style')=='private' else i.ip_address
+    return i.id + ", " + tag_value + ", " + str(ip) + ", " + i.state
 
 
 def search_instances(query):
