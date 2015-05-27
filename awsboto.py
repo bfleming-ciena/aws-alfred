@@ -27,11 +27,8 @@ def get_instances():
     idata = {}
     for r in rsv:
         i = r.instances[0]
-        if 'Name' in i.tags.keys():
-            # import ipdb
-            # ipdb.set_trace()
-            tag_value = i.tags['Name']
-            idata[i.id + ", " + tag_value + ", " + str(i.ip_address) + ", " + i.state] = i
+        tag_value = i.tags.get('Name', '')
+        idata[i.id + ", " + tag_value + ", " + str(i.ip_address) + ", " + i.state] = i
     return idata
 
 
@@ -60,9 +57,9 @@ def stop_instance(id):
 
 
 def instance_to_string(i):
-    if 'Name' in i.tags.keys():
-        tag_value = i.tags['Name']
-        return i.id + ", " + tag_value + ", " + str(i.ip_address) + ", " + i.state
+    #if 'Name' in i.tags.keys():
+    tag_value = i.tags.get('Name', '')
+    return i.id + ", " + tag_value + ", " + str(i.ip_address) + ", " + i.state
 
 
 def search_instances(query):
