@@ -14,13 +14,9 @@ However you must setup the creds file:
 
 Example Usage:
 
-Set the region you want to search.
+Set the configuration.
 
-    ec2 config region=us-west-2
-
-Configure which IP address gets output:
-
-    ec2 config ip_type=private
+    ec2 config region=us-west-2,ip_type=[private|public]
 
 ec2 find -- Searches EC2 instances. Type anything, and multiple keywords. All instance properties will be searched.
 

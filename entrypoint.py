@@ -24,7 +24,7 @@ def ec2_gen_search(wf):
     if len(instances) > 0:
         for i in instances:
             # Add an item to Alfred feedback
-            if config['ip_style']=='private' and argname=='ip_address':
+            if config['ip_type'] == 'private' and argname == 'ip_address':
                 val = getattr(i, 'private_ip_address')
             else:
                 val = getattr(i, argname)

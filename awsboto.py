@@ -60,7 +60,7 @@ def instance_to_string(i):
     #if 'Name' in i.tags.keys():
     config = load_config()
     tag_value = i.tags.get('Name', '')
-    ip = i.private_ip_address if config.get('ip_style')=='private' else i.ip_address
+    ip = i.private_ip_address if config.get('ip_type') == 'private' else i.ip_address
     return i.id + ", " + tag_value + ", " + str(ip) + ", " + i.state
 
 
