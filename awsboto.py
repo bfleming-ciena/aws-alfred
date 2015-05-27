@@ -26,9 +26,9 @@ def get_instances():
     rsv = boto_ec2.get_all_instances()
     idata = {}
     for r in rsv:
-        i = r.instances[0]
-        tag_value = i.tags.get('Name', '')
-        idata[instance_to_string(i)] = i
+        for i in r.instances:
+            tag_value = i.tags.get('Name', '')
+            idata[instance_to_string(i)] = i
     return idata
 
 
